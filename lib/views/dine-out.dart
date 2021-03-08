@@ -3,6 +3,8 @@ import 'package:elmenus/components/dine-out-components.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class DineOut extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,11 @@ class DineOut extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: autoText('New', 1,  21 , FontWeight.w500, Colors.black),
+                  padding:  EdgeInsets.symmetric(horizontal: 10.w),
+                  child: autoText('New', 1,  25.ssp , FontWeight.w700, Colors.black),
                 ),
                 Container(
-                  height: getHeight(context) * 0.13,
+                  height: 0.14.sh,
                   margin: EdgeInsets.only(bottom: getHeight(context)*0.03),
                   child: ListView.builder(
                       itemCount: 4,
@@ -32,18 +34,18 @@ class DineOut extends StatelessWidget {
                         return LayoutBuilder(
                           builder: (ctx,constraints)=>
                               Container(
-                                  width: getWidth(context) * 0.27,
-                                  margin: EdgeInsets.only(left: 10),
+                                  width: 0.27.sw,
+                                  margin: EdgeInsets.only(left: 10.w),
                                   child:Column(
                                     children: <Widget>[
                                          Container(
-                                            height: constraints.maxHeight *0.6,
+                                            height: 0.1.sh,
                                             color: Colors.greenAccent,
                                         ),
                                       Container(
-                                        height: constraints.maxHeight *0.4,
+                                        height: 0.04.sh,
                                         alignment: Alignment.center,
-                                        child: autoText('Abo Ammar',2, 20 , FontWeight.w500, Colors.black),
+                                        child: autoText('Abo Ammar',2, 20.ssp , FontWeight.w500, Colors.black),
                                       )
                                     ],
                                   )

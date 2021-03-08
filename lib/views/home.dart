@@ -4,6 +4,7 @@ import 'package:elmenus/views/dine-out.dart';
 import 'package:elmenus/views/my-orders.dart';
 import 'package:elmenus/views/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -21,8 +22,8 @@ class _BottomNavigationBarExampleState
     final _kTabPages = <Widget>[
        Delivery(),
        DineOut(),
-      MyOrders(),
-      Profile(),
+       MyOrders(),
+       Profile(),
     ];
     final _kBottmonNavBarItems = <BottomNavigationBarItem>[
       const BottomNavigationBarItem(icon: Icon(Icons.motorcycle), title:Text('Delivery')),
@@ -36,6 +37,9 @@ class _BottomNavigationBarExampleState
       currentIndex: _currentTabIndex,
       type: BottomNavigationBarType.fixed,
       fixedColor: primColor,
+      iconSize: 25.sp,
+      selectedFontSize: 12.ssp,
+      unselectedFontSize: 12.ssp,
       unselectedItemColor: Colors.grey,
       onTap: (int index) {
         setState(() {
