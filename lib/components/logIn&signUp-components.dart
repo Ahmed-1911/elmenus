@@ -23,14 +23,15 @@ logInMethodContainer(Color color,String title){
   );
 }
 
-myTextField(IconData icon,String hint,double height){
+myTextField(IconData icon,String hint,double height,TextEditingController controller){
   return  AnimatedContainer(
     duration: Duration(milliseconds: 1500),
     curve: Curves.bounceInOut,
     height: height,
     child: TextFormField(
+      controller: controller,
       cursorColor: primColor,
-      obscureText: true,
+      obscureText:hint=='Enter Your Password'?true:false,
       decoration:height==0.0.sh?InputDecoration(): InputDecoration(
         disabledBorder: InputBorder.none,
           contentPadding: EdgeInsets.symmetric(vertical: 5.sp),

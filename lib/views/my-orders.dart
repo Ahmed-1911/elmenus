@@ -1,7 +1,9 @@
 import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
+import 'package:elmenus/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class MyOrders extends StatelessWidget {
   @override
@@ -28,13 +30,18 @@ class MyOrders extends StatelessWidget {
                   autoText('Nasr City , Cairo' , 1 , 20.ssp, FontWeight.w500, primColor),
                 ],
               ),
-              Container(
-                width: 1.sw,
-                height: 0.07.sh,
-                margin: EdgeInsets.all(10.w),
-                color: primColor,
-                alignment: Alignment.center,
-                child:autoText('I WANT TO DISCOVER AND ORDER NOW' , 1 , 20.ssp, FontWeight.w500, Colors.white),
+              GestureDetector(
+                onTap: (){
+                  Get.to(Home());
+                },
+                child: Container(
+                  width: 1.sw,
+                  height: 0.07.sh,
+                  margin: EdgeInsets.all(10.w),
+                  color: primColor,
+                  alignment: Alignment.center,
+                  child:autoText('I WANT TO DISCOVER AND ORDER NOW' , 1 , 20.ssp, FontWeight.w500, Colors.white),
+                ),
               ),
             ],
           ),

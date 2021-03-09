@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "724974122313",
+    "project_id": "elmenus-60028",
+    "storage_bucket": "elmenus-60028.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:724974122313:android:6c78e81bb12d2f35689698",
+        "android_client_info": {
+          "package_name": "com.codeX.elmenus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "724974122313-7470qd53ddikrehth2846q1bnui107fq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5Lhpn2czrYdmH1BHHozEyA1QiWCt1TB0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "724974122313-7470qd53ddikrehth2846q1bnui107fq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
