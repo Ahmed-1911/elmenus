@@ -63,21 +63,24 @@ class MealDetails extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
-                  padding: EdgeInsets.all(10.sp),
-                  margin: EdgeInsets.symmetric(horizontal: 10.sp),
-                  decoration: BoxDecoration(
-                      color: primColor,
-                      borderRadius: BorderRadius.circular(40.r),
-                      boxShadow: [
-                        BoxShadow(
-                            offset: Offset(1, 1),
-                            color: Colors.black26,
-                            blurRadius: 3,
-                            spreadRadius: 1)
-                      ]),
-                  child: autoText('Add To Basket', 1, 22.ssp, FontWeight.w700,
-                      Colors.white),
+                GestureDetector(
+                  onTap: (){},
+                  child: Container(
+                    padding: EdgeInsets.all(10.sp),
+                    margin: EdgeInsets.symmetric(horizontal: 10.sp),
+                    decoration: BoxDecoration(
+                        color: primColor,
+                        borderRadius: BorderRadius.circular(40.r),
+                        boxShadow: [
+                          BoxShadow(
+                              offset: Offset(1, 1),
+                              color: Colors.black26,
+                              blurRadius: 3,
+                              spreadRadius: 1)
+                        ]),
+                    child: autoText('Add To Basket', 1, 22.ssp, FontWeight.w700,
+                        Colors.white),
+                  ),
                 )
               ],
             ),
