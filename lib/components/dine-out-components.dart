@@ -1,9 +1,10 @@
 import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
+import 'package:elmenus/model/mood-model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-moodContainer(BuildContext context,String title,String image){
+moodContainer(String title,String image){
   return Container(
     margin: EdgeInsets.all(2.w),
     padding: EdgeInsets.symmetric(horizontal: 3.w),
@@ -22,7 +23,7 @@ moodContainer(BuildContext context,String title,String image){
   );
 }
 
-moodSection(BuildContext context){
+moodSection(List<MoodElement> moodList){
   return Container(
     height: 0.4.sh,
     child: LayoutBuilder(
@@ -41,14 +42,14 @@ moodSection(BuildContext context){
               children: <Widget>[
                 Column(
                   children: <Widget>[
-                    moodContainer(context, 'CHEAP EATS', 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHw%3D&w=1000&q=80'),
-                    moodContainer(context, 'COFFEESHOPS', 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHw%3D&w=1000&q=80')
+                    moodContainer( moodList[0].mood, moodList[0].moodImage),
+                    moodContainer( moodList[1].mood, moodList[1].moodImage),
                   ],
                 ),
                 Column(
                   children: <Widget>[
-                    moodContainer(context, 'CASUAL DINNING', 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHw%3D&w=1000&q=80'),
-                    moodContainer(context, 'WORK OR STUDY', 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHw%3D&w=1000&q=80')
+                    moodContainer( moodList[2].mood, moodList[2].moodImage),
+                    moodContainer( moodList[3].mood, moodList[3].moodImage),
                   ],
                 ),
               ],

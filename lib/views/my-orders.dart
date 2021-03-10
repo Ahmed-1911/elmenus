@@ -15,7 +15,7 @@ class MyOrders extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height:0.01.sh),
+              SizedBox(height:0.02.sh),
               Container(
                 width: 0.25.sw,
                 height: 0.18.sh,
@@ -26,8 +26,8 @@ class MyOrders extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  autoText('Restaurants delivering to  ' , 1 , 20.ssp, FontWeight.w500, Colors.black),
-                  autoText('Nasr City , Cairo' , 1 , 20.ssp, FontWeight.w500, primColor),
+                  autoText('Restaurants delivering to  ' , 1 , 17.ssp, FontWeight.w500, Colors.black),
+                  autoText('Nasr City , Cairo' , 1 , 17.ssp, FontWeight.w700, primColor),
                 ],
               ),
               GestureDetector(

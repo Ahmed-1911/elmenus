@@ -6,6 +6,7 @@ import 'package:elmenus/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class SignUpAndLogIN extends StatefulWidget {
   SignUpAndLogIN(this.status);
@@ -22,16 +23,20 @@ class _SignUpAndLogINState extends State<SignUpAndLogIN> {
   TextEditingController password = TextEditingController();
   TextEditingController name = TextEditingController();
   AuthController auth = Get.put(AuthController());
-
+  GetStorage userData=GetStorage();
   submit() async {
     try {
       if (isLogIn) {
         await auth.logIn(email.text, password.text);
         Get.off(Home());
+        userData.write('user', email.text);
+        userData.write('isLogIn', true);
         mySnackBar('Log IN', 'You have successfully logged in');
       } else {
         await auth.signUp(email.text, password.text);
         Get.off(Home());
+        userData.write('user', email.text);
+        userData.write('isLogIn', true);
         mySnackBar('Sign Up', 'You have successfully You have successfully created an account');
       }
     } catch (e) {

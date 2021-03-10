@@ -2,8 +2,10 @@ import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_storage/get_storage.dart';
 
 class MealDetails extends StatelessWidget {
+  bool isLogIn=GetStorage().read('isLogIn');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,12 +66,14 @@ class MealDetails extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){},
+                  onTap: (){
+
+                  },
                   child: Container(
                     padding: EdgeInsets.all(10.sp),
                     margin: EdgeInsets.symmetric(horizontal: 10.sp),
                     decoration: BoxDecoration(
-                        color: primColor,
+                        color: isLogIn==true?primColor:Colors.orangeAccent[200],
                         borderRadius: BorderRadius.circular(40.r),
                         boxShadow: [
                           BoxShadow(
@@ -78,8 +82,12 @@ class MealDetails extends StatelessWidget {
                               blurRadius: 3,
                               spreadRadius: 1)
                         ]),
-                    child: autoText('Add To Basket', 1, 22.ssp, FontWeight.w700,
-                        Colors.white),
+                    child: Row(
+                      children: <Widget>[
+                        autoText('Add To Basket', 1, 22.ssp, FontWeight.w700, Colors.white),
+                        isLogIn==true?SizedBox():Icon(Icons.lock,size: 30.sp,)
+                      ],
+                    ),
                   ),
                 )
               ],

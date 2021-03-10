@@ -1,6 +1,6 @@
 import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/views/delivery.dart';
-import 'package:elmenus/views/dine-out.dart';
+import 'file:///C:/Users/Ahmed-Uwk/Documents/GitHub/elmenus/lib/views/dine-out/dine-out.dart';
 import 'package:elmenus/views/my-orders.dart';
 import 'package:elmenus/views/profile.dart';
 import 'package:flutter/material.dart';
