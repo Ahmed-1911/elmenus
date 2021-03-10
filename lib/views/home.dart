@@ -29,7 +29,7 @@ class _BottomNavigationBarExampleState
       const BottomNavigationBarItem(icon: Icon(Icons.motorcycle), title:Text('Delivery')),
       const BottomNavigationBarItem(icon: Icon(Icons.local_dining), title:Text('Dine out')),
       const BottomNavigationBarItem(icon: Icon(Icons.featured_play_list), title:Text('My Orders')),
-      const BottomNavigationBarItem(icon: Icon(Icons.person), title:Text('My profile')),
+      const BottomNavigationBarItem(icon: Icon(Icons.person), title:Text('profile')),
     ];
     assert(_kTabPages.length == _kBottmonNavBarItems.length);
     final bottomNavBar = BottomNavigationBar(
