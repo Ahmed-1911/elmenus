@@ -1,5 +1,6 @@
 import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
+import 'package:elmenus/model/dishe-model.dart';
 import 'package:elmenus/model/mood-model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -117,7 +118,7 @@ discoverRest(BuildContext context ,String title){
   );
 }
 
-discoverTopDish(BuildContext context){
+discoverTopDish(BuildContext context,List<DishElement> dishes){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -129,7 +130,7 @@ discoverTopDish(BuildContext context){
         height: 0.12.sh,
         margin: EdgeInsets.only(bottom: 30.h),
         child: ListView.builder(
-            itemCount: 4,
+            itemCount: dishes.length,
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
               return LayoutBuilder(
@@ -147,7 +148,7 @@ discoverTopDish(BuildContext context){
                                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                                   color: Colors.greenAccent,
                                   child: Container(
-                                    child: autoText('Koshari', 1, 20.ssp , FontWeight.w700, Colors.white),
+                                    child: autoText(dishes[index].dish, 1, 20.ssp , FontWeight.w700, Colors.white),
                                   )
                               ),
                             ),

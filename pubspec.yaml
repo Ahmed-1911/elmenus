@@ -35,7 +35,7 @@ dependencies:
   get:
   http:
   get_storage:
-
+  flutter_spinkit:
 
 dev_dependencies:
   flutter_test:

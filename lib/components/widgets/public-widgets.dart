@@ -1,5 +1,7 @@
+import 'package:elmenus/components/constrains.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -26,3 +28,11 @@ AutoSizeText autoText(String text, int maxLine, double fontSize,
        colorText: Colors.black
    );
  }
+
+
+SpinKitWave spinKit(BuildContext context) {
+  return SpinKitWave(
+    color: primColor,
+    size: 50.0,
+  );
+}

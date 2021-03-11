@@ -1,5 +1,6 @@
 import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
+import 'package:elmenus/model/dishe-model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,13 +28,21 @@ topBar(BuildContext context){
       children: <Widget>[
         Container(
           height: 0.06.sh,
-          padding: EdgeInsets.symmetric(vertical: 10.w),
+          padding: EdgeInsets.symmetric(horizontal: 7.w),
           color: Colors.grey[200],
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              FlatButton.icon(onPressed: (){}, icon: Icon(Icons.motorcycle,size: 35.sp,), label:  autoText('Delivery',1,16.ssp,FontWeight.w500,Colors.black)),
+              Row(
+
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Icon(Icons.motorcycle,size: 25.sp,),
+                  SizedBox(width: 5.w,),
+                  autoText('Delivery',1,23.ssp,FontWeight.w700,Colors.black),
+                ]
+              ),
               autoText('Nasr City, Cairo',1,19.ssp,FontWeight.w500,primColor),
               Icon(Icons.notifications_none,size: 30.sp,)
             ],
@@ -89,19 +98,26 @@ topBar(BuildContext context){
 promoCodeContainer(BuildContext context){
   return Container(
     margin: EdgeInsets.symmetric(horizontal: 10.sp),
-    height: 0.1.sh,
+    height: 0.12.sh,
     child: LayoutBuilder(
       builder: (ctx,constraints)=> Row(
         children: <Widget>[
           Container(
-            width: 0.2.sw,
-            color: Colors.teal,
+            width: 0.3.sw,
+            decoration: BoxDecoration(
+                color: primColor,
+                borderRadius: BorderRadius.circular(10.r),
+              image: DecorationImage(
+                image:NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfIASC8Gk-B4MKiGCXKetebwQCB-nxunXXGA&usqp=CAU'),
+                fit: BoxFit.fill
+              )
+            ),
           ),
           Container(
-            width: 0.72.sw,
+            width: 0.63.sw,
             padding: EdgeInsets.all(5.sp),
             alignment: Alignment.center,
-            child: autoText('50EGP off on your 1st order for a \n limited time on orders above 120 EGP\n Use Code : FIRST50 ', 3 , 19.ssp, FontWeight.w600, Colors.black),
+            child: autoText('50EGP off on your 1st order for a \n limited time on orders above 120 EGP   Use Code : FIRST50 ', 3 , 16.ssp, FontWeight.w600, Colors.black),
           )
         ],
       ),
@@ -322,7 +338,7 @@ comeTrueContainer(BuildContext context){
   );
 }
 
-discoverByDish(BuildContext context){
+discoverByDish(List<DishElement> dishes){
   return Container(
     height: 0.27.sh,
     margin: EdgeInsets.only(left: 10.sp),
@@ -331,12 +347,12 @@ discoverByDish(BuildContext context){
       children: <Widget>[
         Flexible(
           child: autoText(
-              'Discovrer by dish', 1, 25.ssp, FontWeight.w700, Colors.black),
+              'Discover by dish', 1, 25.ssp, FontWeight.w700, Colors.black),
         ),
         Flexible(
           flex: 3,
           child: ListView.builder(
-              itemCount: 4,
+              itemCount: dishes.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context,index)=>
                   LayoutBuilder(
@@ -351,6 +367,10 @@ discoverByDish(BuildContext context){
                               decoration: BoxDecoration(
                                   color: Colors.black26,
                                   borderRadius: BorderRadius.circular(10.r),
+                                  image: DecorationImage(
+                                    image: NetworkImage('https://www.skipeak.net/system/redactor_assets/pictures/683/evan-wise-D99y38Na5Xo-unsplash.jpg'),
+                                    fit: BoxFit.fill
+                                  ),
                                   border: index==0?
                                   Border.all(
                                     color: primColor,
@@ -363,7 +383,7 @@ discoverByDish(BuildContext context){
                             ),
                             Container(
                                 height: 0.05.sh,
-                                child: autoText('All', 1 , 19.ssp, FontWeight.w500, Colors.black))
+                                child: autoText(dishes[index].dish, 1 , 19.ssp, FontWeight.w500, Colors.black))
                           ],
                         ),
                   )

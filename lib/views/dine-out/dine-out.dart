@@ -10,15 +10,15 @@ import 'package:get/get.dart';
 class DineOut extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    MoodsController moods = Get.put(MoodsController());
+    DineOutController moods = Get.find<DineOutController>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: ListView(
+        child:Obx(()=>moods.isLoading.value?Center(child: spinKit(context)):ListView(
           children: <Widget>[
-            Obx(()=>moods.isLoading.value?CircularProgressIndicator():moodSection(moods.moodsList)),
+            moodSection(moods.moodsList),
             discoverRest(context,'Discover Nasr City,Cairo'),
-            discoverTopDish(context),
+            discoverTopDish(context,moods.dishesList),
             discoverRest(context,'Hidden Game'),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,10 +41,10 @@ class DineOut extends StatelessWidget {
                                   margin: EdgeInsets.only(left: 10.w),
                                   child:Column(
                                     children: <Widget>[
-                                         Container(
-                                            height: 0.1.sh,
-                                            color: Colors.greenAccent,
-                                        ),
+                                      Container(
+                                        height: 0.1.sh,
+                                        color: Colors.greenAccent,
+                                      ),
                                       Container(
                                         height: 0.04.sh,
                                         alignment: Alignment.center,
@@ -59,7 +59,8 @@ class DineOut extends StatelessWidget {
               ],
             )
           ],
-        ),
+        )),
+
       ),
     );
   }

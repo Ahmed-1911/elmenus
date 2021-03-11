@@ -5,8 +5,8 @@ class ListOfMoods {
 
   List<dynamic> moods;
 
-  factory ListOfMoods.fromJson(Map<String, dynamic> json) => ListOfMoods(
-    moods: json["moods"],
+  factory ListOfMoods.fromJson(List<dynamic> json) => ListOfMoods(
+    moods: json,
   );
 }
 

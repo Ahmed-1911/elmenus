@@ -4,13 +4,26 @@ import 'package:elmenus/views/auth/login&signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class Profile extends StatelessWidget {
+  bool isLogIn=GetStorage().read('isLogIn');
+  String user=GetStorage().read('user');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
+        child: isLogIn?
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              autoText('Welcome' , 1, 25.ssp, FontWeight.w600, Colors.black),
+              autoText(user , 1, 25.ssp, FontWeight.w600, primColor),
+            ],
+          ),
+        ):
+        Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           child: Column(
             mainAxisAlignment:MainAxisAlignment.center,
