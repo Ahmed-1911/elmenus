@@ -23,6 +23,5 @@ class MoodElement {
     mood: json["mood"],
     moodImage: json["moodImage"],
   );
-
 }
 

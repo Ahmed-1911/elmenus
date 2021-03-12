@@ -1,11 +1,9 @@
-import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/dine-out-components.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
 import 'package:elmenus/views/delivery/delivery-controller.dart';
 import 'package:elmenus/views/dine-out/dine-out-controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class DineOut extends StatelessWidget {

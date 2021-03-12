@@ -6,6 +6,7 @@ import 'package:elmenus/model/offers.dart';
 import 'package:elmenus/model/restaurants-model.dart';
 import 'package:elmenus/model/services-model.dart';
 import 'package:elmenus/views/delivery/delivery-controller.dart';
+import 'package:elmenus/views/restaurant-details/restaurants-details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -430,98 +431,102 @@ discoverByDish(List<DishElement> dishes){
 
 allRestaurant(List<RestaurantElement> restaurants){
   return Column(
-    children: List.generate(restaurants.length, (index) => Container(
-      height: 0.5.sh,
-      margin: EdgeInsets.all(10.sp),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.r),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black45,
-                offset: Offset(2, 2),
-                spreadRadius: 2,
-                blurRadius: 10
-            )
-          ]
-      ),
-      child: LayoutBuilder(
-        builder:(ctx,constraints) => Column(
-          children: <Widget>[
-            Container(
-              height: 0.32.sh,
-              decoration: BoxDecoration(
-                //borderRadius: BorderRadius.circular(60.r),
-                image: DecorationImage(
-                    image: NetworkImage(restaurants[index].mealImage),
-                    fit: BoxFit.fill
-                ),
-                color: Colors.red,
-              ),
-            ),
-            Container(
-              height: 0.12.sh,
-              color: Colors.white,
-              child: Row(
-                children: <Widget>[
-                  Container(
-                    width: 0.2.sw,
-                    margin: EdgeInsets.symmetric(vertical: 3.h,horizontal: 5.w),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(60.r),
-                      image: DecorationImage(
-                        image: NetworkImage(restaurants[index].image),
-                        fit: BoxFit.fill
-                      ),
-                      color: Colors.red,
-                    ),
+    children: List.generate(restaurants.length, (index) => GestureDetector(
+      onTap: (){
+        Get.to(RestaurantDetailsPage(restaurants[index]));
+      },
+      child: Container(
+        height: 0.5.sh,
+        margin: EdgeInsets.all(10.sp),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10.r),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black45,
+                  offset: Offset(2, 2),
+                  spreadRadius: 2,
+                  blurRadius: 10
+              )
+            ]
+        ),
+        child:  Column(
+            children: <Widget>[
+              Container(
+                height: 0.32.sh,
+                decoration: BoxDecoration(
+                  //borderRadius: BorderRadius.circular(60.r),
+                  image: DecorationImage(
+                      image: NetworkImage(restaurants[index].mealImage),
+                      fit: BoxFit.fill
                   ),
-                  Container(
-                    width: 0.7.sw,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            autoText(restaurants[index].id, 1, 23.ssp, FontWeight.w700, Colors.black),
-                            autoText(restaurants[index].dish, 1, 18.ssp, FontWeight.w500, Colors.black),
-                          ],
+                  color: Colors.red,
+                ),
+              ),
+              Container(
+                height: 0.12.sh,
+                color: Colors.white,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      width: 0.2.sw,
+                      margin: EdgeInsets.symmetric(vertical: 3.h,horizontal: 5.w),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(60.r),
+                        image: DecorationImage(
+                          image: NetworkImage(restaurants[index].image),
+                          fit: BoxFit.fill
                         ),
-                        Column(),
+                        color: Colors.red,
+                      ),
+                    ),
+                    Container(
+                      width: 0.7.sw,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              autoText(restaurants[index].id, 1, 23.ssp, FontWeight.w700, Colors.black),
+                              autoText(restaurants[index].dish, 1, 18.ssp, FontWeight.w500, Colors.black),
+                            ],
+                          ),
+                          Column(),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                height: 0.05.sh,
+                color: Colors.white,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.motorcycle,size: 35.sp,),
+                        SizedBox(width: 10.w),
+                        autoText('40 mins', 1, 18.ssp, FontWeight.w500, Colors.black)
                       ],
                     ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              height: 0.05.sh,
-              color: Colors.white,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.motorcycle,size: 35.sp,),
-                      SizedBox(width: 10.w),
-                      autoText('40 mins', 1, 18.ssp, FontWeight.w500, Colors.black)
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Icon(Icons.radio_button_checked,color: Colors.green,size: 35.sp,),
-                      SizedBox(width: 10.w),
-                      autoText('ORDER ONLINE', 1, 18.ssp, FontWeight.w500, Colors.green)
-                    ],
-                  ),
-                  Row(),
-                ],
-              ),
-            )
-          ],
+                    Row(
+                      children: <Widget>[
+                        Icon(Icons.radio_button_checked,color: Colors.green,size: 35.sp,),
+                        SizedBox(width: 10.w),
+                        autoText('ORDER ONLINE', 1, 18.ssp, FontWeight.w500, Colors.green)
+                      ],
+                    ),
+                    Row(),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
-      ),
-    )),
+    ),
+    )
   );
 }

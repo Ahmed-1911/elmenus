@@ -16,7 +16,7 @@ class DeliveryController extends GetxController {
   }
 
   var isLoading = true.obs;
-  var dishFilter='FriedChicken'.obs;
+  var dishFilter='Grills'.obs;
   var restaurantsList = List<RestaurantElement>().obs;
   var restaurantsListByMood = List<RestaurantElement>().obs;
   var restaurantsListByDish = List<RestaurantElement>().obs;
