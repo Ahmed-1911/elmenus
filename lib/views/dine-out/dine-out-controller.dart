@@ -6,10 +6,10 @@ import 'package:get/get.dart';
 
 class DineOutController extends GetxController {
   @override
-  void onInit() {
+  void onInit() async{
     super.onInit();
-    fetchListOfMoods();
-    fetchListOfDishes();
+    await fetchListOfMoods();
+    await fetchListOfDishes();
   }
 
   var isLoading = true.obs;

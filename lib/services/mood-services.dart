@@ -9,11 +9,9 @@ class DineOutApi{
       var url = 'https://db-json-project.herokuapp.com/moods';
       final response = await http.get(url);
       final extractedData = json.decode(response.body);
-      print("aaaaaaaaaaaaaaaaaaaa"+extractedData.toString());
       if (response.statusCode == 200) {
         ListOfMoods moodsList = ListOfMoods.fromJson(extractedData);
         List<MoodElement> mList=moodsList.moods.map((e) => MoodElement.fromJson(e)).toList();
-        print("bbbbbbbbbbbbbbbbbbbbbb"+ mList[0].mood);
         return mList;
       }
       else {

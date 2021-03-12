@@ -1,8 +1,14 @@
 import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
 import 'package:elmenus/model/dishe-model.dart';
+import 'package:elmenus/model/mood-model.dart';
+import 'package:elmenus/model/offers.dart';
+import 'package:elmenus/model/restaurants-model.dart';
+import 'package:elmenus/model/services-model.dart';
+import 'package:elmenus/views/delivery/delivery-controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 mySizeBox(BuildContext context){
   return SizedBox(
@@ -35,7 +41,6 @@ topBar(BuildContext context){
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               Row(
-
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Icon(Icons.motorcycle,size: 25.sp,),
@@ -127,15 +132,15 @@ promoCodeContainer(BuildContext context){
 
 middleList(BuildContext context){
   return Container(
-    height: 0.1.sh,
+    height: 0.11.sh,
     child: ListView.builder(
-        itemCount: 4,
+        itemCount: servicesList.length,
         scrollDirection: Axis.horizontal,
         padding: EdgeInsets.all(7.sp),
         itemBuilder: (context, index) {
           return LayoutBuilder(
             builder: (ctx,constraints)=> Container(
-                width: 0.25.sw,
+                width: 0.29.sw,
                 height: constraints.maxHeight,
                 margin: EdgeInsets.symmetric(horizontal: 5.sp),
                 decoration: BoxDecoration(
@@ -144,22 +149,27 @@ middleList(BuildContext context){
                     boxShadow: [
                       BoxShadow(
                           color: Colors.black26,
-                          offset: Offset(2, 2),
+                          offset: Offset(1, 1),
                           spreadRadius: 1,
-                          blurRadius: 5)
+                          blurRadius: 3)
                     ]
                 ),
                 child:Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     Container(
+                      height: 0.05.sh,
+                        width: 0.20.sw,
                         alignment: Alignment.center,
-                        child: Icon(Icons.payment,color: Colors.teal,size: 35.sp,)),
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(servicesList[index].imageUrl),
+                            fit: BoxFit.fill
+                          )
+                        ),
+                    ),
                     Container(
-                      child: Padding(
-                        padding:  EdgeInsets.symmetric(horizontal: 5.sp),
-                        child: autoText('Online Payment', 1, 15.ssp , FontWeight.w500, Colors.black),
-                      ),
+                      child: autoText(servicesList[index].name, 1, 14.ssp , FontWeight.w500, Colors.black),
                     ),
                   ],
                 )
@@ -169,7 +179,7 @@ middleList(BuildContext context){
   );
 }
 
-offersContainer(BuildContext context){
+offersContainer(List<OfferElement> offers){
   return Container(
     height: 0.3.sh,
     margin: EdgeInsets.only(left: 10.sp),
@@ -184,7 +194,7 @@ offersContainer(BuildContext context){
           flex: 4,
           child: Container(
             child: ListView.builder(
-                itemCount: 6,
+                itemCount: offers.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context,index)=>
                     LayoutBuilder(
@@ -192,6 +202,14 @@ offersContainer(BuildContext context){
                         alignment: Alignment.bottomCenter,
                         width: 0.8.sw,
                         margin: EdgeInsets.only(right: 5.sp),
+                        decoration: BoxDecoration(
+                            color: Colors.deepOrange,
+                            borderRadius: BorderRadius.circular(10.r),
+                          image: DecorationImage(
+                            image: NetworkImage(offers[index].mealImage),
+                              fit: BoxFit.fill
+                          )
+                        ),
                         child: Stack(
                           overflow: Overflow.visible,
                           children: <Widget>[
@@ -216,10 +234,14 @@ offersContainer(BuildContext context){
                                     width: 80.h,
                                     decoration: BoxDecoration(
                                         color: Colors.teal,
-                                        borderRadius: BorderRadius.circular(10.r)
+                                        borderRadius: BorderRadius.circular(10.r),
+                                        image: DecorationImage(
+                                        image: NetworkImage(offers[index].image),
+                                          fit: BoxFit.fill
+                                    )
                                     ),
                                   ),
-                                  autoText('Rosto', 1 , 20.ssp , FontWeight.w600, Colors.black)
+                                  autoText(offers[index].name, 1 , 20.ssp , FontWeight.w600, Colors.black)
                                 ],
                               ),
                             ),
@@ -230,16 +252,13 @@ offersContainer(BuildContext context){
                                 padding: EdgeInsets.all(4.0.sp),
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 5.sp),
-                                  child: autoText(' Expires in 5 days', 1, 18.ssp, FontWeight.w500, primColor),
+                                  child: autoText(' Expires in ${offers[index].duration}', 1, 18.ssp, FontWeight.w500, primColor),
                                 ),
                               ),
                             )
                           ],
                         ),
-                        decoration: BoxDecoration(
-                            color: Colors.deepOrange,
-                            borderRadius: BorderRadius.circular(10.r)
-                        ),
+
                       ),
                     )
             ),
@@ -250,7 +269,7 @@ offersContainer(BuildContext context){
   );
 }
 
-comeTrueContainer(BuildContext context){
+comeTrueContainer(List<OfferElement> offers){
   return Container(
     height: 0.33.sh,
     margin: EdgeInsets.only(left: 10.sp),
@@ -265,7 +284,7 @@ comeTrueContainer(BuildContext context){
           flex: 4,
           child: Container(
             child: ListView.builder(
-                itemCount: 4,
+                itemCount: 5,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context,index)=>
                     LayoutBuilder(
@@ -283,11 +302,15 @@ comeTrueContainer(BuildContext context){
                                     alignment: Alignment.bottomLeft,
                                     decoration: BoxDecoration(
                                         color: Colors.black26,
-                                        borderRadius: BorderRadius.circular(10.r)
+                                        borderRadius: BorderRadius.circular(10.r),
+                                        image: DecorationImage(
+                                            image: NetworkImage(offers[index+2].mealImage),
+                                            fit: BoxFit.fill
+                                        )
                                     ),
                                     child: Container(
                                         width: 0.5.sw,
-                                        child: autoText('The Rastafari \n 50.00 EGP - 105.00 EGP ', 2 , 17.ssp, FontWeight.w500, Colors.white)),
+                                        child: autoText('The Rastafari \n 50.00 EGP - 105.00 EGP ', 2 , 19.ssp, FontWeight.w700, Colors.white)),
                                   ),
                                   Container(
                                     height: 0.05.sh,
@@ -298,11 +321,18 @@ comeTrueContainer(BuildContext context){
                                         Container(
                                           width: 0.1.sw,
                                           margin: EdgeInsets.symmetric(horizontal: 10.sp,vertical: 1.sp),
-                                          color: Colors.teal,
+                                          decoration: BoxDecoration(
+                                              color: Colors.teal,
+                                              borderRadius: BorderRadius.circular(10.r),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(offers[index+2].image),
+                                                  fit: BoxFit.fill
+                                              )
+                                          ),
                                         ),
                                         Flexible(
                                           child: autoText(
-                                              'Zack\'s Fried Chicken', 1, 20.ssp, FontWeight.w700, Colors.black),
+                                              offers[index+2].name, 1, 20.ssp, FontWeight.w700, Colors.black),
                                         ),
                                       ],
                                     ),
@@ -339,64 +369,68 @@ comeTrueContainer(BuildContext context){
 }
 
 discoverByDish(List<DishElement> dishes){
-  return Container(
-    height: 0.27.sh,
-    margin: EdgeInsets.only(left: 10.sp),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Flexible(
-          child: autoText(
-              'Discover by dish', 1, 25.ssp, FontWeight.w700, Colors.black),
-        ),
-        Flexible(
-          flex: 3,
-          child: ListView.builder(
-              itemCount: dishes.length,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context,index)=>
-                  LayoutBuilder(
-                    builder:(ctx,constraints)=>
-                        Column(
-                          children: <Widget>[
-                            Container(
-                              height: 0.15.sh,
-                              margin: EdgeInsets.only(right: 5.sp),
-                              width: 0.4.sw,
-                              alignment: Alignment.bottomLeft,
-                              decoration: BoxDecoration(
-                                  color: Colors.black26,
-                                  borderRadius: BorderRadius.circular(10.r),
-                                  image: DecorationImage(
-                                    image: NetworkImage('https://www.skipeak.net/system/redactor_assets/pictures/683/evan-wise-D99y38Na5Xo-unsplash.jpg'),
-                                    fit: BoxFit.fill
-                                  ),
-                                  border: index==0?
-                                  Border.all(
-                                    color: primColor,
-                                    width: 3,
-                                  ):
-                                  Border.all(
-                                      style: BorderStyle.none
-                                  )
-                              ),
-                            ),
-                            Container(
-                                height: 0.05.sh,
-                                child: autoText(dishes[index].dish, 1 , 19.ssp, FontWeight.w500, Colors.black))
-                          ],
-                        ),
-                  )
+  DeliveryController deliveryController=Get.find<DeliveryController>();
+  return Obx(()=>
+     Container(
+      height: 0.27.sh,
+      margin: EdgeInsets.only(left: 10.sp),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Flexible(
+            child: autoText(
+                'Discover by dish', 1, 25.ssp, FontWeight.w700, Colors.black),
           ),
-        ),
-      ],
+          Flexible(
+            flex: 3,
+            child: ListView.builder(
+                itemCount: dishes.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context,index)=> GestureDetector(
+                  onTap: ()async{
+                    await deliveryController.changeDishFilter(dishes[index].dish);
+                  },
+                  child: Column(
+                              children: <Widget>[
+                                Container(
+                                  height: 0.15.sh,
+                                  margin: EdgeInsets.only(right: 5.sp),
+                                  width: 0.4.sw,
+                                  alignment: Alignment.bottomLeft,
+                                  decoration: BoxDecoration(
+                                      color: Colors.black26,
+                                      borderRadius: BorderRadius.circular(10.r),
+                                      image: DecorationImage(
+                                        image: NetworkImage('https://www.skipeak.net/system/redactor_assets/pictures/683/evan-wise-D99y38Na5Xo-unsplash.jpg'),
+                                        fit: BoxFit.fill
+                                      ),
+                                      border: deliveryController.dishFilter.value==dishes[index].dish?
+                                      Border.all(
+                                        color: primColor,
+                                        width: 3,
+                                      ):
+                                      Border.all(
+                                          style: BorderStyle.none
+                                      )
+                                  ),
+                                ),
+                                Container(
+                                    height: 0.05.sh,
+                                    child: autoText(dishes[index].dish, 1 , 19.ssp, FontWeight.w500, Colors.black))
+                              ],
+                            ),
+                ),
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
 
-allRestaurant(BuildContext context){
+allRestaurant(List<RestaurantElement> restaurants){
   return Column(
-    children: List.generate(7, (index) => Container(
+    children: List.generate(restaurants.length, (index) => Container(
       height: 0.5.sh,
       margin: EdgeInsets.all(10.sp),
       decoration: BoxDecoration(
@@ -415,7 +449,14 @@ allRestaurant(BuildContext context){
           children: <Widget>[
             Container(
               height: 0.32.sh,
-              color: Colors.red,
+              decoration: BoxDecoration(
+                //borderRadius: BorderRadius.circular(60.r),
+                image: DecorationImage(
+                    image: NetworkImage(restaurants[index].mealImage),
+                    fit: BoxFit.fill
+                ),
+                color: Colors.red,
+              ),
             ),
             Container(
               height: 0.12.sh,
@@ -424,9 +465,13 @@ allRestaurant(BuildContext context){
                 children: <Widget>[
                   Container(
                     width: 0.2.sw,
-                    margin: EdgeInsets.all(5.sp),
+                    margin: EdgeInsets.symmetric(vertical: 3.h,horizontal: 5.w),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(60.r),
+                      image: DecorationImage(
+                        image: NetworkImage(restaurants[index].image),
+                        fit: BoxFit.fill
+                      ),
                       color: Colors.red,
                     ),
                   ),
@@ -439,8 +484,8 @@ allRestaurant(BuildContext context){
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            autoText('McDonald\'s', 1, 23.ssp, FontWeight.w700, Colors.black),
-                            autoText('Fast Food', 1, 18.ssp, FontWeight.w500, Colors.black)
+                            autoText(restaurants[index].id, 1, 23.ssp, FontWeight.w700, Colors.black),
+                            autoText(restaurants[index].dish, 1, 18.ssp, FontWeight.w500, Colors.black),
                           ],
                         ),
                         Column(),
