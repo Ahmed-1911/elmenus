@@ -1,3 +1,5 @@
+import 'package:elmenus/translation.dart';
+import 'package:elmenus/views/check-out.dart';
 import 'package:elmenus/views/home.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
@@ -20,7 +22,10 @@ class MyApp extends StatelessWidget {
       builder:()=> GetMaterialApp(
         title: 'Elmenus',
         debugShowCheckedModeBanner: false,
-        home: Home(),
+        home:  Home(),
+        translations: Translation(),
+        locale: Locale('en'),
+        fallbackLocale: Locale('en'),
       ),
     );
   }

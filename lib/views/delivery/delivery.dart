@@ -5,6 +5,7 @@ import 'package:elmenus/views/dine-out/dine-out-controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Delivery extends StatefulWidget {
   const Delivery({Key key}) : super(key: key);
@@ -27,7 +28,9 @@ class _SliverAppBarExampleState extends State<Delivery> {
             Center(child: spinKit(context))
                 :
             SingleChildScrollView(
-              child: Column(children: <Widget>[
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
                 topBar(context),
                 mySizeBox(context),
                 promoCodeContainer(context),
@@ -40,6 +43,10 @@ class _SliverAppBarExampleState extends State<Delivery> {
                 mySizeBox(context),
                 discoverByDish(moods.dishesList),
                 mySizeBox(context),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.sp),
+                  child: autoText('Restaurants ( ${deliveryController.restaurantsListByDish.length} )', 1, 25.ssp, FontWeight.w700, Colors.black),
+                ),
                 allRestaurant(deliveryController.restaurantsListByDish)
               ]),
             )),
