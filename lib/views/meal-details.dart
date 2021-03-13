@@ -4,8 +4,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_storage/get_storage.dart';
 
-class MealDetails extends StatelessWidget {
-  bool isLogIn=GetStorage().read('isLogIn');
+class MealDetails extends StatefulWidget {
+  String meal;
+  String mealDetails;
+  double price;
+  MealDetails({this.meal, this.mealDetails, this.price});
+
+  @override
+  _MealDetailsState createState() => _MealDetailsState();
+}
+
+class _MealDetailsState extends State<MealDetails> {
+  bool isLogIn = GetStorage().read('isLogIn');
+  int _counter = 1;
+  void _incremateCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _decrmentCounter() {
+    if (_counter > 1) {
+      setState(() {
+        _counter--;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,13 +61,17 @@ class MealDetails extends StatelessWidget {
                                   blurRadius: 3,
                                   spreadRadius: 1)
                             ]),
-                        child: Icon(
-                          Icons.arrow_upward,
-                          color: primColor,
-                          size: 35.sp,
+                        child: GestureDetector(
+                          onTap: () => _incremateCounter(),
+                          child: Icon(
+                            Icons.arrow_upward,
+                            color: primColor,
+                            size: 35.sp,
+                          ),
                         ),
                       ),
-                      autoText('1', 1, 23.ssp, FontWeight.w700, Colors.black),
+                      autoText('${_counter}', 1, 23.ssp, FontWeight.w700,
+                          Colors.black),
                       Container(
                         padding: EdgeInsets.all(5.sp),
                         margin: EdgeInsets.symmetric(horizontal: 10.sp),
@@ -56,24 +85,27 @@ class MealDetails extends StatelessWidget {
                                   blurRadius: 3,
                                   spreadRadius: 1)
                             ]),
-                        child: Icon(
-                          Icons.arrow_downward,
-                          color: primColor,
-                          size: 35.sp,
+                        child: GestureDetector(
+                          onTap: () => _decrmentCounter(),
+                          child: Icon(
+                            Icons.arrow_downward,
+                            color: primColor,
+                            size: 35.sp,
+                          ),
                         ),
                       )
                     ],
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
-
-                  },
+                  onTap: () {},
                   child: Container(
                     padding: EdgeInsets.all(10.sp),
                     margin: EdgeInsets.symmetric(horizontal: 10.sp),
                     decoration: BoxDecoration(
-                        color: isLogIn==true?primColor:Colors.orangeAccent[200],
+                        color: isLogIn == true
+                            ? primColor
+                            : Colors.orangeAccent[200],
                         borderRadius: BorderRadius.circular(40.r),
                         boxShadow: [
                           BoxShadow(
@@ -83,9 +115,15 @@ class MealDetails extends StatelessWidget {
                               spreadRadius: 1)
                         ]),
                     child: Row(
-                      children: <Widget>[
-                        autoText('Add To Basket', 1, 22.ssp, FontWeight.w700, Colors.white),
-                        isLogIn==true?SizedBox():Icon(Icons.lock,size: 30.sp,)
+                      children: [
+                        autoText('Add To Basket', 1, 22.ssp, FontWeight.w700,
+                            Colors.white),
+                        isLogIn == true
+                            ? SizedBox()
+                            : Icon(
+                                Icons.lock,
+                                size: 30.sp,
+                              )
                       ],
                     ),
                   ),
@@ -98,7 +136,7 @@ class MealDetails extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Container(
-                height: 0.3.sh,
+                height: 0.sh,
                 color: Colors.greenAccent,
                 child: Stack(
                   alignment: Alignment.bottomRight,
@@ -147,8 +185,8 @@ class MealDetails extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
-                          autoText('Grand Share Box', 1, 23.ssp,
-                              FontWeight.w700, Colors.black),
+                          autoText(widget.meal, 1, 23.ssp, FontWeight.w700,
+                              Colors.black),
                           Container(
                               padding: EdgeInsets.symmetric(horizontal: 10.sp),
                               decoration: BoxDecoration(
@@ -156,7 +194,7 @@ class MealDetails extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30.r),
                               ),
                               child: autoText(
-                                '150.00 EGP',
+                                '${widget.price * _counter} EGP',
                                 1,
                                 21.ssp,
                                 FontWeight.w500,
@@ -168,7 +206,7 @@ class MealDetails extends StatelessWidget {
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 20.w),
                       child: autoText(
-                        'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,',
+                        widget.mealDetails,
                         4,
                         18.ssp,
                         FontWeight.w500,
@@ -197,12 +235,12 @@ class MealDetails extends StatelessWidget {
                                       Icon(index == 1
                                           ? Icons.radio_button_checked
                                           : Icons.radio_button_unchecked),
-                                      autoText(' small', 1, 18.ssp, FontWeight.w500,
-                                          Colors.black),
+                                      autoText(' small', 1, 18.ssp,
+                                          FontWeight.w500, Colors.black),
                                     ],
                                   ),
-                                  autoText('120.99 EGP', 1, 19.ssp, FontWeight.w700,
-                                      Colors.black),
+                                  autoText('120.99 EGP', 1, 19.ssp,
+                                      FontWeight.w700, Colors.black),
                                 ],
                               ))))),
               Container(

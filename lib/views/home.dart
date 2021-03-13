@@ -1,5 +1,5 @@
 import 'package:elmenus/components/constrains.dart';
-import 'package:elmenus/views/delivery.dart';
+import 'delivery/delivery.dart';
 import 'dine-out/dine-out.dart';
 import 'package:elmenus/views/my-orders.dart';
 import 'package:elmenus/views/profile.dart';

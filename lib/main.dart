@@ -1,6 +1,4 @@
-import 'package:elmenus/views/auth/login&signup.dart';
 import 'package:elmenus/views/home.dart';
-import 'package:elmenus/views/meal-details.dart';
 import 'package:flutter/material.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
