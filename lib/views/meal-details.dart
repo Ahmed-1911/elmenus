@@ -27,7 +27,7 @@ class _MealDetailsState extends State<MealDetails> {
     });
   }
 
-  List<String> size=['sandwich','small','medium','large'];
+  List<String> size=['sandwich'.tr,'small'.tr,'medium'.tr,'large'.tr];
   void decrmentCounter() {
     if (_counter > 1) {
       setState(() {
@@ -64,16 +64,15 @@ class _MealDetailsState extends State<MealDetails> {
                     if(isLogIn == true){
                       basketItems.add(BasketItem(widget.element.name,_counter,(_counter*widget.element.price).toDouble()));
                       Get.back();
-                      mySnackBar('Congratulation', 'The meal has been added successfully');
-                      print(basketItems.length);
+                      mySnackBar('cong'.tr, 'sucMeal'.tr);
                     }
                     else{
                       Get.defaultDialog(
-                          title: 'Error',
+                          title: 'err'.tr,
                           radius: 15.r,
-                          middleText: 'You should log in first',
+                          middleText: 'logFirst'.tr,
                           onCancel: () {},
-                          textCancel: 'ok');
+                          textCancel: 'ok'.tr);
                     }
                   },
                   child: Container(
@@ -240,7 +239,7 @@ class _MealDetailsState extends State<MealDetails> {
                     color: Colors.grey[100],
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.symmetric(vertical: 15.sp),
-                    child: autoText(' Special instructions', 1, 22.ssp,
+                    child: autoText('note'.tr, 1, 22.ssp,
                         FontWeight.w700, Colors.black),
                   ),
                   TextField(
@@ -249,7 +248,7 @@ class _MealDetailsState extends State<MealDetails> {
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
-                      hintText: 'ex : don not add onion',
+                      hintText: 'ex'.tr,
                     ),
                   ),
                 ],

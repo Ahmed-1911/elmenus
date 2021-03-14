@@ -83,7 +83,7 @@ class Profile extends StatelessWidget {
                                         blurRadius: 3,
                                         spreadRadius: 1)
                                   ]),
-                              child: autoText('Log Out', 1, 22.ssp, FontWeight.w700,
+                              child: autoText('logout'.tr, 1, 22.ssp, FontWeight.w700,
                                   Colors.white),
                             ),
                           )

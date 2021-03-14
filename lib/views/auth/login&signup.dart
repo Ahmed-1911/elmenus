@@ -31,21 +31,21 @@ class _SignUpAndLogINState extends State<SignUpAndLogIN> {
         Get.off(Home());
         userData.write('user', email.text);
         userData.write('isLogIn', true);
-        mySnackBar('Log IN', 'You have successfully logged in');
+        mySnackBar('login'.tr, 'sucLog'.tr);
       } else {
         await auth.signUp(email.text, password.text);
         Get.off(Home());
         userData.write('user', email.text);
         userData.write('isLogIn', true);
-        mySnackBar('Sign Up', 'You have successfully You have successfully created an account');
+        mySnackBar('signUp'.tr, 'sucAccount'.tr);
       }
     } catch (e) {
       Get.defaultDialog(
-          title: 'Error',
+          title: 'err'.tr,
           radius: 15.r,
           middleText: e,
           onCancel: () {},
-          textCancel: 'ok');
+          textCancel: 'ok'.tr);
     }
   }
 
@@ -113,7 +113,7 @@ class _SignUpAndLogINState extends State<SignUpAndLogIN> {
                               height = 0.0.sh;
                             });
                           },
-                          child: autoText('Log In', 1, 20.ssp, FontWeight.w700,
+                          child: autoText('login'.tr, 1, 20.ssp, FontWeight.w700,
                               isLogIn ? primColor : Colors.black)),
                       GestureDetector(
                         onTap: () {
@@ -122,7 +122,7 @@ class _SignUpAndLogINState extends State<SignUpAndLogIN> {
                             height = 0.06.sh;
                           });
                         },
-                        child: autoText('Sign Up', 1, 20.ssp, FontWeight.w700,
+                        child: autoText('signUp'.tr, 1, 20.ssp, FontWeight.w700,
                             isLogIn ? Colors.black : primColor),
                       ),
                     ],
@@ -140,9 +140,9 @@ class _SignUpAndLogINState extends State<SignUpAndLogIN> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       logInMethodContainer(
-                          Colors.blue[900], 'Login With Facebook'),
+                          Colors.blue[900], 'face'.tr),
                       logInMethodContainer(
-                          Colors.red[800], 'Login With Google'),
+                          Colors.red[800], 'google'.tr),
                       Container(
                         height: 0.35.sh,
                         padding: EdgeInsets.symmetric(horizontal: 15.sp),
@@ -160,13 +160,13 @@ class _SignUpAndLogINState extends State<SignUpAndLogIN> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
-                            myTextField(Icons.person_pin, 'Enter Your Name',
+                            myTextField(Icons.person_pin, 'name'.tr,
                                 height, name),
-                            myTextField(Icons.person_pin, 'Enter Your Email',
+                            myTextField(Icons.person_pin, 'mail'.tr,
                                 0.06.sh, email),
-                            myTextField(Icons.lock, 'Enter Your Password',
+                            myTextField(Icons.lock, 'pass'.tr,
                                 0.06.sh, password),
-                            autoText('Forgot Password?', 1, 18.ssp,
+                            autoText('fPass'.tr, 1, 18.ssp,
                                 FontWeight.w700, Colors.black54),
                             GestureDetector(
                               onTap: () {
@@ -180,7 +180,7 @@ class _SignUpAndLogINState extends State<SignUpAndLogIN> {
                                     color: primColor,
                                   ),
                                   child: autoText(
-                                      isLogIn ? 'Log In' : 'Create Account',
+                                      isLogIn ? 'login'.tr : 'create'.tr,
                                       1,
                                       20.ssp,
                                       FontWeight.w700,
@@ -189,7 +189,7 @@ class _SignUpAndLogINState extends State<SignUpAndLogIN> {
                           ],
                         ),
                       ),
-                      autoText('Continue as a guest ->', 1, 20.ssp,
+                      autoText('guest'.tr, 1, 20.ssp,
                           FontWeight.w700, primColor)
                     ],
                   ),

@@ -2,6 +2,7 @@ import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
 import 'package:elmenus/model/basket-items.dart';
 import 'package:elmenus/views/home.dart';
+import 'package:elmenus/views/my-orders/my-orders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,7 @@ class CheckOut extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      bottomNavigationBar: !isLogIn?
+      bottomNavigationBar: !isLogIn ?
       SizedBox():
       BottomAppBar(
           color: Colors.white,
@@ -24,38 +25,66 @@ class CheckOut extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
-                GestureDetector(
-                  onTap: ()async{
-                    //  await addOrder();
-                      basketItems=[];
-                      Get.off(Home());
-                      mySnackBar('Congratulation', 'Your order has been executed successfully');
-                   // }
-                  },
-                  child: Container(
-                    padding: EdgeInsets.all(10.sp),
-                    margin: EdgeInsets.symmetric(horizontal: 10.sp),
-                    decoration: BoxDecoration(
-                        color: primColor,
-                        borderRadius: BorderRadius.circular(40.r),
-                        boxShadow: [
-                          BoxShadow(
-                              offset: Offset(1, 1),
-                              color: Colors.black26,
-                              blurRadius: 3,
-                              spreadRadius: 1)
-                        ]),
-                    child: autoText('Confirm order', 1, 22.ssp, FontWeight.w700,
-                        Colors.white),
+                basketItems.length == 0?
+                SizedBox():
+                Expanded(
+                  child: GestureDetector(
+                    onTap: ()async{
+                      //  await addOrder();
+                        basketItems=[];
+                        Get.off(Home());
+                        mySnackBar('cong'.tr, 'sucOrder'.tr);
+                     // }
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(5.sp),
+                      margin: EdgeInsets.symmetric(horizontal: 7.sp),
+                      decoration: BoxDecoration(
+                          color: primColor,
+                          borderRadius: BorderRadius.circular(40.r),
+                          boxShadow: [
+                            BoxShadow(
+                                offset: Offset(1, 1),
+                                color: Colors.black26,
+                                blurRadius: 3,
+                                spreadRadius: 1)
+                          ]),
+                      child: autoText('confirm'.tr, 1, 18.ssp, FontWeight.w700,
+                          Colors.white),
+                    ),
                   ),
-                )
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: ()async{
+                        Get.to(MyOrders());
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(5.sp),
+                      margin: EdgeInsets.symmetric(horizontal: 7.sp),
+                      decoration: BoxDecoration(
+                          color: primColor,
+                          borderRadius: BorderRadius.circular(40.r),
+                          boxShadow: [
+                            BoxShadow(
+                                offset: Offset(1, 1),
+                                color: Colors.black26,
+                                blurRadius: 3,
+                                spreadRadius: 1)
+                          ]),
+                      child: autoText('orders'.tr, 1, 18.ssp, FontWeight.w700,
+                          Colors.white),
+                    ),
+                  ),
+                ),
               ],
             ),
           )),
       body: SafeArea(
-          child: isLogIn?basketItems.length == 0
+          child: isLogIn?
+          basketItems.length == 0
               ? Center(
-                  child: autoText('No Items Added Yet', 1, 25.ssp,
+                  child: autoText('noItem'.tr, 1, 25.ssp,
                       FontWeight.w600, Colors.black),
                 )
               : ListView.builder(
@@ -139,13 +168,13 @@ class CheckOut extends StatelessWidget {
                           fit: BoxFit.fill),
                       ),
                 ),
-                autoText('You\'re missing out \n You haven\'t place any orders yet' , 3 , 23.ssp, FontWeight.w700, Colors.black),
-                autoText('Discover the best dishes around you and place your first order now' , 2 , 18.ssp, FontWeight.w500, Colors.grey),
+                autoText('missOut'.tr , 3 , 23.ssp, FontWeight.w700, Colors.black),
+                autoText('discover'.tr , 2 , 18.ssp, FontWeight.w500, Colors.grey),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    autoText('Restaurants delivering to  ' , 1 , 17.ssp, FontWeight.w500, Colors.black),
-                    autoText('Nasr City , Cairo' , 1 , 17.ssp, FontWeight.w700, primColor),
+                    autoText('dto'.tr , 1 , 17.ssp, FontWeight.w500, Colors.black),
+                    autoText('loc'.tr , 1 , 17.ssp, FontWeight.w700, primColor),
                   ],
                 ),
                 GestureDetector(
@@ -158,7 +187,7 @@ class CheckOut extends StatelessWidget {
                     margin: EdgeInsets.all(10.w),
                     color: primColor,
                     alignment: Alignment.center,
-                    child:autoText('I WANT TO DISCOVER AND ORDER NOW' , 1 , 20.ssp, FontWeight.w500, Colors.white),
+                    child:autoText('discNow'.tr , 1 , 20.ssp, FontWeight.w500, Colors.white),
                   ),
                 ),
               ],

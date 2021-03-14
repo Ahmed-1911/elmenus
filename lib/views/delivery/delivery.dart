@@ -45,7 +45,7 @@ class _SliverAppBarExampleState extends State<Delivery> {
                 mySizeBox(context),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10.sp),
-                  child: autoText('Restaurants ( ${deliveryController.restaurantsListByDish.length} )', 1, 25.ssp, FontWeight.w700, Colors.black),
+                  child: autoText('rest'.tr+' ( ${deliveryController.restaurantsListByDish.length} )', 1, 25.ssp, FontWeight.w700, Colors.black),
                 ),
                 allRestaurant(deliveryController.restaurantsListByDish)
               ]),

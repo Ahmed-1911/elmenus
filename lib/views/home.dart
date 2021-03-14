@@ -6,7 +6,6 @@ import 'package:elmenus/views/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:elmenus/utils/lang-controller.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -32,7 +31,7 @@ class _BottomNavigationBarExampleState extends State<Home> {
        BottomNavigationBarItem(
           icon: Icon(Icons.local_dining), title: Text('dine'.tr)),
        BottomNavigationBarItem(
-          icon: Icon(Icons.featured_play_list), title: Text('cart'.tr)),
+          icon: Icon(Icons.shopping_cart), title: Text('cart'.tr)),
        BottomNavigationBarItem(
           icon: Icon(Icons.person), title: Text('profile'.tr)),
     ];

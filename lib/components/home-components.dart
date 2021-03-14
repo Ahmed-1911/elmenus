@@ -1,7 +1,6 @@
 import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
 import 'package:elmenus/model/dishe-model.dart';
-import 'package:elmenus/model/mood-model.dart';
 import 'package:elmenus/model/offers.dart';
 import 'package:elmenus/model/restaurants-model.dart';
 import 'package:elmenus/model/services-model.dart';
@@ -46,10 +45,10 @@ topBar(BuildContext context){
                 children: <Widget>[
                   Icon(Icons.motorcycle,size: 25.sp,),
                   SizedBox(width: 5.w,),
-                  autoText('Delivery',1,23.ssp,FontWeight.w700,Colors.black),
+                  autoText('delivery'.tr,1,23.ssp,FontWeight.w700,Colors.black),
                 ]
               ),
-              autoText('Nasr City, Cairo',1,19.ssp,FontWeight.w500,primColor),
+              autoText('loc'.tr,1,19.ssp,FontWeight.w500,primColor),
               Icon(Icons.notifications_none,size: 30.sp,)
             ],
           ),
@@ -71,7 +70,7 @@ topBar(BuildContext context){
                         filled: true,
                         fillColor: Colors.grey[200],
                         prefixIcon: Icon(Icons.search,size: 35.sp,),
-                        hintText: 'Find a Restaurant',
+                        hintText: 'search'.tr,
                         hintStyle: TextStyle(
                             fontSize: 17.ssp
                         ),
@@ -123,7 +122,7 @@ promoCodeContainer(BuildContext context){
             width: 0.63.sw,
             padding: EdgeInsets.all(5.sp),
             alignment: Alignment.center,
-            child: autoText('50EGP off on your 1st order for a \n limited time on orders above 120 EGP   Use Code : FIRST50 ', 3 , 16.ssp, FontWeight.w600, Colors.black),
+            child: autoText('code'.tr, 3 , 16.ssp, FontWeight.w600, Colors.black),
           )
         ],
       ),
@@ -170,7 +169,7 @@ middleList(BuildContext context){
                         ),
                     ),
                     Container(
-                      child: autoText(servicesList[index].name, 1, 14.ssp , FontWeight.w500, Colors.black),
+                      child: autoText(servicesList[index].name.tr, 1, 14.ssp , FontWeight.w500, Colors.black),
                     ),
                   ],
                 )
@@ -189,7 +188,7 @@ offersContainer(List<OfferElement> offers){
       children: <Widget>[
         Flexible(
           child: autoText(
-              'Offers', 1, 25.ssp, FontWeight.w700, Colors.black),
+              'offers'.tr, 1, 25.ssp, FontWeight.w700, Colors.black),
         ),
         Flexible(
           flex: 4,
@@ -222,7 +221,7 @@ offersContainer(List<OfferElement> offers){
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10.r)
                               ),
-                              child: autoText(' % 30EGP on orders above 130 EGP', 1, 14.ssp, FontWeight.w500, Colors.black54),
+                              child: autoText('off'.tr, 1, 14.ssp, FontWeight.w500, Colors.black54),
                             ),
                             Positioned(
                               left: 20.w,
@@ -279,7 +278,7 @@ comeTrueContainer(List<OfferElement> offers){
       children: <Widget>[
         Flexible(
           child: autoText(
-              'Your Cravings Come true', 1, 25.ssp, FontWeight.w700, Colors.black),
+              'true'.tr, 1, 25.ssp, FontWeight.w700, Colors.black),
         ),
         Flexible(
           flex: 4,
@@ -380,7 +379,7 @@ discoverByDish(List<DishElement> dishes){
         children: <Widget>[
           Flexible(
             child: autoText(
-                'Discover by dish', 1, 25.ssp, FontWeight.w700, Colors.black),
+                'dish'.tr, 1, 25.ssp, FontWeight.w700, Colors.black),
           ),
           Flexible(
             flex: 3,
