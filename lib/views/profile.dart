@@ -57,7 +57,7 @@ class Profile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     autoText(
-                        'Welcome'.tr, 1, 25.ssp, FontWeight.w600, Colors.black),
+                        'welcome'.tr, 1, 25.ssp, FontWeight.w600, Colors.black),
                     autoText(user, 1, 25.ssp, FontWeight.w600, primColor),
                     Container(
                       height: 0.08.sh,

@@ -40,10 +40,10 @@ moodSection(List<MoodElement> moodList){
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            height: 0.08.sh,
-            margin: EdgeInsets.only(left: 10.w),
-            alignment: Alignment.centerLeft,
-            child: autoText('Discover by moods', 1, 25.ssp, FontWeight.w700, Colors.black),
+            height: 0.07.sh,
+            margin: EdgeInsets.symmetric(horizontal: 10.w),
+           // alignment: Alignment.centerLeft,
+            child: autoText('moods'.tr, 1, 25.ssp, FontWeight.w700, Colors.black),
           ),
           Container(
             height: 0.32.sh,
@@ -154,7 +154,7 @@ discoverTopDish(List<DishElement> dishes){
     children: <Widget>[
       Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w),
-        child: autoText('Discover Top Dish', 1,  25.ssp , FontWeight.w700, Colors.black),
+        child: autoText('dish'.tr, 1,  25.ssp , FontWeight.w700, Colors.black),
       ),
       Container(
         height: 0.12.sh,
@@ -207,7 +207,7 @@ newRestaurants(List<RestaurantElement> restaurants ){
     children: <Widget>[
       Padding(
         padding:  EdgeInsets.symmetric(horizontal: 10.w),
-        child: autoText('New', 1,  25.ssp , FontWeight.w700, Colors.black),
+        child: autoText('new'.tr, 1,  25.ssp , FontWeight.w700, Colors.black),
       ),
       Container(
         height: 0.14.sh,

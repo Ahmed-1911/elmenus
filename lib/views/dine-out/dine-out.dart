@@ -18,9 +18,9 @@ class DineOut extends StatelessWidget {
         child:Obx(()=>mood.isLoading.value?Center(child: spinKit(context)):ListView(
           children: <Widget>[
             moodSection(mood.moodsList),
-            discoverRest(deliveryController.restaurantsList,'Discover Nasr City,Cairo'),
+            discoverRest(deliveryController.restaurantsList,'loc'.tr),
             discoverTopDish(mood.dishesList),
-            discoverRest(deliveryController.restaurantsListByMood ,'Hidden Game'),
+            discoverRest(deliveryController.restaurantsListByMood ,'hidden'.tr),
             newRestaurants(deliveryController.restaurantsList)
           ],
         )),

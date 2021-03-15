@@ -31,7 +31,7 @@ class RestaurantDetailsPage extends StatelessWidget {
                       //location
                       locationContainer(),
                       //meals
-                      autoText('all Meals ', 1, 25.ssp, FontWeight.w700,
+                      autoText('meals'.tr, 1, 25.ssp, FontWeight.w700,
                           Colors.black54),
                       Column(
                         children: List.generate(
@@ -56,6 +56,7 @@ class RestaurantDetailsPage extends StatelessWidget {
                                                     .menu[index],
                                                 mealImage:
                                                     restaurantElement.mealImage,
+                                                restaurant: restaurantElement.id,
                                               )),
                                         ),
                                         enableDrag: true,
@@ -63,27 +64,6 @@ class RestaurantDetailsPage extends StatelessWidget {
                                         enterBottomSheetDuration: Duration(milliseconds: 3000),
                                         barrierColor: Colors.black54,
                                     );
-//                                    showModalBottomSheet(
-//                                        context: context,
-//                                        builder: (builder) {
-//                                          return  Container(
-//                                            height:0.9.sh,
-//                                          color: Color(0xFF737373),
-//                                          child:  Container(
-//                                                decoration: new BoxDecoration(
-//                                                    color: Colors.white,
-//                                                    borderRadius: new BorderRadius
-//                                                            .only(
-//                                                        topLeft: const Radius
-//                                                            .circular(10.0),
-//                                                        topRight: const Radius
-//                                                            .circular(10.0))),
-//                                                child:  MealDetails(
-//                                                  element: restaurantController.menu[index],
-//                                                  mealImage: restaurantElement.mealImage ,
-//                                                )),
-//                                          );
-//                                        });
                                   },
                                   child: Container(
                                     height: 0.15.sh,
@@ -169,14 +149,5 @@ class RestaurantDetailsPage extends StatelessWidget {
       ),
     );
   }
-
-// void onMealTap() {
-//   var context;
-//   showModalBottomSheet(
-//       context: context,
-//       builder: (context) {
-//         return Column(children: [MealDetails()]);
-//       });
-// }
 
 }

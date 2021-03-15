@@ -11,7 +11,9 @@ import 'package:get_storage/get_storage.dart';
 class MealDetails extends StatefulWidget {
   MenuElement element;
   String mealImage;
-  MealDetails({this.element,this.mealImage});
+  String restaurant;
+
+  MealDetails({this.element, this.mealImage,this.restaurant});
 
   @override
   _MealDetailsState createState() => _MealDetailsState();
@@ -20,14 +22,16 @@ class MealDetails extends StatefulWidget {
 class _MealDetailsState extends State<MealDetails> {
   bool isLogIn = GetStorage().read('isLogIn');
   int _counter = 1;
-  int selected=0;
+  int selected = 0;
+
   void incremateCounter() {
     setState(() {
       _counter++;
     });
   }
 
-  List<String> size=['sandwich'.tr,'small'.tr,'medium'.tr,'large'.tr];
+  List<String> size = ['sandwich'.tr, 'small'.tr, 'medium'.tr, 'large'.tr];
+
   void decrmentCounter() {
     if (_counter > 1) {
       setState(() {
@@ -53,20 +57,21 @@ class _MealDetailsState extends State<MealDetails> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
-                      counterContainer(()=>incremateCounter()),
-                      autoText('${_counter}', 1, 23.ssp, FontWeight.w700, Colors.black),
-                      counterContainer(()=>decrmentCounter()),
+                      counterContainer(() => incremateCounter()),
+                      autoText('${_counter}', 1, 23.ssp, FontWeight.w700,
+                          Colors.black),
+                      counterContainer(() => decrmentCounter()),
                     ],
                   ),
                 ),
                 GestureDetector(
-                  onTap: (){
-                    if(isLogIn == true){
-                      basketItems.add(BasketItem(widget.element.name,_counter,(_counter*widget.element.price).toDouble()));
+                  onTap: () {
+                    if (isLogIn == true) {
+                      basketItems.add(BasketItem(widget.element.name, _counter,
+                          (_counter * widget.element.price).toDouble(),widget.restaurant));
                       Get.back();
                       mySnackBar('cong'.tr, 'sucMeal'.tr);
-                    }
-                    else{
+                    } else {
                       Get.defaultDialog(
                           title: 'err'.tr,
                           radius: 15.r,
@@ -90,9 +95,10 @@ class _MealDetailsState extends State<MealDetails> {
                               blurRadius: 3,
                               spreadRadius: 1)
                         ]),
-                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        autoText('Add To Basket', 1, 22.ssp, FontWeight.w700,
+                        autoText('basket'.tr, 1, 22.ssp, FontWeight.w700,
                             Colors.white),
                         isLogIn == true
                             ? SizedBox()
@@ -113,10 +119,9 @@ class _MealDetailsState extends State<MealDetails> {
             Container(
               height: 0.2.sh,
               decoration: BoxDecoration(
-              color: Colors.purple,
-              image: DecorationImage(
-                  image: NetworkImage(widget.mealImage),
-                  fit: BoxFit.fill),
+                color: Colors.purple,
+                image: DecorationImage(
+                    image: NetworkImage(widget.mealImage), fit: BoxFit.fill),
               ),
               child: Stack(
                 alignment: Alignment.bottomRight,
@@ -160,13 +165,14 @@ class _MealDetailsState extends State<MealDetails> {
               child: Column(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 5.sp),
+                    margin:
+                        EdgeInsets.symmetric(horizontal: 10.sp, vertical: 5.sp),
                     color: Colors.white,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        autoText(widget.element.name, 1, 22.ssp, FontWeight.w700,
-                            Colors.black),
+                        autoText(widget.element.name, 1, 22.ssp,
+                            FontWeight.w700, Colors.black),
                         Container(
                             padding: EdgeInsets.symmetric(horizontal: 10.sp),
                             decoration: BoxDecoration(
@@ -174,7 +180,7 @@ class _MealDetailsState extends State<MealDetails> {
                               borderRadius: BorderRadius.circular(30.r),
                             ),
                             child: autoText(
-                              '${widget.element.price * _counter} EGP',
+                              '${widget.element.price * _counter} ''egp'.tr,
                               1,
                               21.ssp,
                               FontWeight.w500,
@@ -207,40 +213,53 @@ class _MealDetailsState extends State<MealDetails> {
                             margin: EdgeInsets.symmetric(horizontal: 10.sp),
                             width: getHeight(context),
                             child: Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
                                 Row(
                                   children: <Widget>[
                                     GestureDetector(
-                                      onTap: (){
+                                      onTap: () {
                                         setState(() {
-                                          selected=index;
+                                          selected = index;
                                         });
                                       },
-                                      child: Icon(index == selected
-                                          ? Icons.radio_button_checked
-                                          : Icons.radio_button_unchecked,size: 30.sp,color: index == selected?Colors.green:Colors.black,),
+                                      child: Icon(
+                                        index == selected
+                                            ? Icons.radio_button_checked
+                                            : Icons.radio_button_unchecked,
+                                        size: 30.sp,
+                                        color: index == selected
+                                            ? Colors.green
+                                            : Colors.black,
+                                      ),
                                     ),
-                                    SizedBox(width: 5.w,),
+                                    SizedBox(
+                                      width: 5.w,
+                                    ),
                                     autoText(size[index], 1, 18.ssp,
                                         FontWeight.w500, Colors.black),
                                   ],
                                 ),
-                                autoText('${(widget.element.price*index)+widget.element.price} EGP', 1, 19.ssp,
-                                    FontWeight.w700, Colors.black),
+                                autoText(
+                                    '${(widget.element.price * index) + widget.element.price}' 'egp'.tr,
+                                    1,
+                                    19.ssp,
+                                    FontWeight.w700,
+                                    Colors.black),
                               ],
                             ))))),
             Container(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Container(
                     height: 0.04.sh,
+                    //width: 1.sw,
                     color: Colors.grey[100],
-                    alignment: Alignment.centerLeft,
+                    //alignment: Alignment.center,
                     margin: EdgeInsets.symmetric(vertical: 15.sp),
-                    child: autoText('note'.tr, 1, 22.ssp,
-                        FontWeight.w700, Colors.black),
+                    child: autoText(
+                        'note'.tr, 1, 22.ssp, FontWeight.w700, Colors.black),
                   ),
                   TextField(
                     maxLines: 1,

@@ -18,7 +18,7 @@ class OrdersController extends GetxController {
     var user=await GetStorage().read('user');
     isLoading(true);
     var all = await OrdersApi().fetchOrdersList();
-    orders.value=all.where((element) => element.user=='test@gmail.com').toList();
+    orders.value=all.where((element) => element.user==user).toList();
     isLoading(false);
   }
 

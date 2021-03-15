@@ -49,6 +49,11 @@ const Map<String,String> en={
   'off':' % 30EGP on orders above 130 EGP',
   'true':'Your Cravings Come true',
   'dish':'Discover by dish',
-  'orders':'Show All Orders'
-
+  'orders':'Show All Orders',
+  'meals':'all Meals',
+  'hidden':'Hidden Game',
+  'moods':'Discover by moods',
+  'new':'New',
+  'basket':'Add To Basket',
+  'egp':'EGP'
 };

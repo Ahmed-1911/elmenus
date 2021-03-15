@@ -32,15 +32,15 @@ class OrdersApi {
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: jsonEncode(<String, String>{
+        body: jsonEncode(<String, dynamic>{
           'resturant': order.restaurant,
-          'user': order.user,
+          'userEmail': order.user,
           'totalprice': order.totalPrice,
           'deliveryfee': order.deliveryFee
         }),
       );
       if (response.statusCode == 200) {
-        return OrderElement.fromJson(jsonDecode(response.body));
+        print(OrderElement.fromJson(jsonDecode(response.body)).toString());
       } else {
         throw Exception('Failed to send data');
       }

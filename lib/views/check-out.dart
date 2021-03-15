@@ -1,6 +1,8 @@
 import 'package:elmenus/components/constrains.dart';
 import 'package:elmenus/components/widgets/public-widgets.dart';
 import 'package:elmenus/model/basket-items.dart';
+import 'package:elmenus/model/orders-model.dart';
+import 'package:elmenus/services/orders-services.dart';
 import 'package:elmenus/views/home.dart';
 import 'package:elmenus/views/my-orders/my-orders.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +12,11 @@ import 'package:get_storage/get_storage.dart';
 
 class CheckOut extends StatelessWidget {
   bool isLogIn = GetStorage().read('isLogIn');
-
+  String user = GetStorage().read('user');
+  var total=0.0;
   @override
   Widget build(BuildContext context) {
+    print(user);
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: !isLogIn ?
@@ -30,7 +34,12 @@ class CheckOut extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: ()async{
-                      //  await addOrder();
+                        await OrdersApi().sendOrder(OrderElement(
+                          deliveryFee: 15,
+                          restaurant: basketItems[0].restaurant,
+                          totalPrice: total,
+                          user: user
+                        ));
                         basketItems=[];
                         Get.off(Home());
                         mySnackBar('cong'.tr, 'sucOrder'.tr);
@@ -89,7 +98,9 @@ class CheckOut extends StatelessWidget {
                 )
               : ListView.builder(
               itemCount: basketItems.length,
-              itemBuilder: (context, index) => Container(
+              itemBuilder: (context, index) {
+                total+=basketItems[index].total;
+                return Container(
                 height: 0.15.sh,
                 margin: EdgeInsets.all(5.sp),
                 decoration: BoxDecoration(
@@ -152,7 +163,7 @@ class CheckOut extends StatelessWidget {
                     )
                   ],
                 ),
-              ))
+              );})
           :Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Column(
